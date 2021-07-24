@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenTelemetry.Extensions.Hosting</name>
+    </assembly>
+    <members>
+        <member name="T:OpenTelemetry.Extensions.Hosting.Implementation.HostingExtensionsEventSource">
+            <summary>
+            EventSource events emitted from the project.
+            </summary>
+        </member>
+        <member name="T:OpenTelemetry.Trace.TracerProviderBuilderHosting">
+            <summary>
+            A <see cref="T:OpenTelemetry.Trace.TracerProviderBuilderBase"/> with support for deferred initialization using <see cref="T:System.IServiceProvider"/> for dependency injection.
+            </summary>
+        </member>
+        <member name="T:OpenTelemetry.Trace.TracerProviderBuilderExtensions">
+            <summary>
+            Contains extension methods for the <see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/> class.
+            </summary>
+        </member>
+        <member name="M:OpenTelemetry.Trace.TracerProviderBuilderExtensions.AddInstrumentation``1(OpenTelemetry.Trace.TracerProviderBuilder)">
+            <summary>
+            Adds instrumentation to the provider.
+            </summary>
+            <typeparam name="T">Instrumentation type.</typeparam>
+            <param name="tracerProviderBuilder"><see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/>.</param>
+            <returns>The supplied <see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:OpenTelemetry.Trace.TracerProviderBuilderExtensions.AddProcessor``1(OpenTelemetry.Trace.TracerProviderBuilder)">
+            <summary>
+            Adds a processor to the provider.
+            </summary>
+            <typeparam name="T">Processor type.</typeparam>
+            <param name="tracerProviderBuilder"><see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/>.</param>
+            <returns>The supplied <see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:OpenTelemetry.Trace.TracerProviderBuilderExtensions.SetSampler``1(OpenTelemetry.Trace.TracerProviderBuilder)">
+            <summary>
+            Sets the sampler on the provider.
+            </summary>
+            <typeparam name="T">Sampler type.</typeparam>
+            <param name="tracerProviderBuilder"><see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/>.</param>
+            <returns>The supplied <see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:OpenTelemetry.Trace.TracerProviderBuilderExtensions.Configure(OpenTelemetry.Trace.TracerProviderBuilder,System.Action{System.IServiceProvider,OpenTelemetry.Trace.TracerProviderBuilder})">
+            <summary>
+            Register a callback action to configure the <see
+            cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/> once the application <see
+            cref="T:System.IServiceProvider"/> is available.
+            </summary>
+            <param name="tracerProviderBuilder"><see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/>.</param>
+            <param name="configure">Configuration callback.</param>
+            <returns>The supplied <see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/> for chaining.</returns>
+        </member>
+        <member name="M:OpenTelemetry.Trace.TracerProviderBuilderExtensions.GetServices(OpenTelemetry.Trace.TracerProviderBuilder)">
+            <summary>
+            Gets the application <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> attached to
+            the <see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/>.
+            </summary>
+            <param name="tracerProviderBuilder"><see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/>.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> or <see langword="null"/>
+            if services are unavailable.</returns>
+        </member>
+        <member name="M:OpenTelemetry.Trace.TracerProviderBuilderExtensions.Build(OpenTelemetry.Trace.TracerProviderBuilder,System.IServiceProvider)">
+            <summary>
+            Run the configured actions to initialize the <see cref="T:OpenTelemetry.Trace.TracerProvider"/>.
+            </summary>
+            <param name="tracerProviderBuilder"><see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/>.</param>
+            <param name="serviceProvider"><see cref="T:System.IServiceProvider"/>.</param>
+            <returns><see cref="T:OpenTelemetry.Trace.TracerProvider"/>.</returns>
+        </member>
+        <member name="M:OpenTelemetry.Internal.ExceptionExtensions.ToInvariantString(System.Exception)">
+            <summary>
+            Returns a culture-independent string representation of the given <paramref name="exception"/> object,
+            appropriate for diagnostics tracing.
+            </summary>
+            <param name="exception">Exception to convert to string.</param>
+            <returns>Exception as string with no culture.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.OpenTelemetryServicesExtensions">
+            <summary>
+            Extension methods for setting up OpenTelemetry services in an <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.OpenTelemetryServicesExtensions.AddOpenTelemetryTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds OpenTelemetry TracerProvider to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to add services to.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> so that additional calls can be chained.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.OpenTelemetryServicesExtensions.AddOpenTelemetryTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{OpenTelemetry.Trace.TracerProviderBuilder})">
+            <summary>
+            Adds OpenTelemetry TracerProvider to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to add services to.</param>
+            <param name="configure">Callback action to configure the <see cref="T:OpenTelemetry.Trace.TracerProviderBuilder"/>.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> so that additional calls can be chained.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.OpenTelemetryServicesExtensions.AddOpenTelemetryTracing(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,OpenTelemetry.Trace.TracerProvider})">
+            <summary>
+            Adds OpenTelemetry TracerProvider to the specified <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to add services to.</param>
+            <param name="createTracerProvider">A delegate that provides the tracer provider to be registered.</param>
+            <returns>The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> so that additional calls can be chained.</returns>
+        </member>
+    </members>
+</doc>
