@@ -9,7 +9,6 @@ using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-
 namespace OpenTelemetryExample
 {
     public class OtelManager
@@ -18,10 +17,7 @@ namespace OpenTelemetryExample
         {
             try
             {
-                StreamReader r = new StreamReader("TracerConfig.json");
-
-                var otConfig = JsonConvert.DeserializeObject<OtConfig>(r.ReadToEnd());
-
+                var otConfig = new OtConfig();
                 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
                 var tracerProviderBuilder = Sdk.CreateTracerProviderBuilder().AddAspNetInstrumentation()
                     .AddHttpClientInstrumentation()
@@ -42,9 +38,9 @@ namespace OpenTelemetryExample
 
         public class OtConfig
         {
-            public string OtSource { get; set; }
+            public string OtSource => "VishalVyasApp";
 
-            public string OtService { get; set; }
+            public string OtService => "my-app";
         }
 
     }

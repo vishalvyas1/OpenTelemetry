@@ -147,10 +147,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Readme.Designer.md" />
-    <None Include="Readme.md">
-      <SubType>Component</SubType>
-    </None>
-    <None Include="TracerConfig.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
